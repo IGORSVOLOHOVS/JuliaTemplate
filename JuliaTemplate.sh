@@ -6,9 +6,11 @@ datestamp=$(date +%Y%m%d-%H%M%S)
 # Set paths
 repoURL="https://github.com/IGORSVOLOHOVS/JuliaTemplate.git"
 cloneDir=$(mktemp -d -t "${datestamp}XXX")  # Creates a temp directory.
-targetDir="/home/igors/Projects/Task-${datestamp}"
 
-# Create the target directory
+# --- Modified: Use $HOME for user's home directory ---
+targetDir="$HOME/Projects/Task-${datestamp}"
+
+# Create the target directory (including the Projects directory if it doesn't exist)
 mkdir -p "$targetDir" || { echo "Failed to create target directory"; exit 1; }
 
 # Clone the repository (sparse checkout)
@@ -19,7 +21,7 @@ cd "$cloneDir" || { echo "Failed to change directory to cloneDir"; exit 1; }
 git sparse-checkout set --no-cone template || { echo "Sparse checkout failed"; exit 1; }
 git checkout || { echo "Git checkout failed"; exit 1; }
 
-# Copy *contents* of TaskTools to the target directory.  THIS IS THE KEY CHANGE.
+# Copy *contents* of template to the target directory.
 cp -r "$cloneDir/template/." "$targetDir" || { echo "Copy failed"; exit 1; }
 
 # Initialize a new Git repository in the target directory
