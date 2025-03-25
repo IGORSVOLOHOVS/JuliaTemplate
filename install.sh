@@ -4,7 +4,7 @@
 datestamp=$(date +%Y%m%d-%H%M%S)
 
 # Set paths
-repoURL="https://github.com/IGORSVOLOHOVS/TaskManager.git"
+repoURL="https://github.com/IGORSVOLOHOVS/JuliaTemplate.git"
 cloneDir=$(mktemp -d -t "${datestamp}XXX")  # Creates a temp directory.
 targetDir="/home/igors/Projects/Task-${datestamp}"
 
@@ -16,11 +16,11 @@ git clone -n --depth=1 --filter=tree:0 "$repoURL" "$cloneDir" || { echo "Git clo
 
 # Change directory and set up sparse checkout
 cd "$cloneDir" || { echo "Failed to change directory to cloneDir"; exit 1; }
-git sparse-checkout set --no-cone TaskTools || { echo "Sparse checkout failed"; exit 1; }
+git sparse-checkout set --no-cone template || { echo "Sparse checkout failed"; exit 1; }
 git checkout || { echo "Git checkout failed"; exit 1; }
 
 # Copy *contents* of TaskTools to the target directory.  THIS IS THE KEY CHANGE.
-cp -r "$cloneDir/TaskTools/." "$targetDir" || { echo "Copy failed"; exit 1; }
+cp -r "$cloneDir/template/." "$targetDir" || { echo "Copy failed"; exit 1; }
 
 # Initialize a new Git repository in the target directory
 cd "$targetDir" || { echo "Failed to change directory to targetDir"; exit 1; }
