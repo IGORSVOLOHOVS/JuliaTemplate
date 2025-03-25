@@ -1,0 +1,41 @@
+# Julia-specific ignores
+*.jl.cov
+*.jl.mem
+*.jl.gc
+*.jl.grind
+*.jl.prof
+*.jl.stack
+*.jl.trace
+*.jld
+*.jld2
+*.toml.bak
+*.toml.tmp
+Manifest.toml
+Project.toml
+
+# Compiled shared libraries
+*.so
+*.dylib
+*.dll
+
+# REPL history files
+.julia_history
+
+# Julia package environments
+.julia/environments/*
+
+# Temporary files
+*.tmp
+*.log
+*.bak
+
+# For this project
+/build/
+*.DS_Store
+*.idea/
+*.vscode/
+
+# Databases
+*.db
+*.zip
+*.csv

@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]  # Запуск при пуше в main
+  pull_request:
+    branches: [ main ]  # Запуск при pull request'ах в main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest  # Или другая ОС
+
+    steps:
+    - uses: actions/checkout@v4  # Чекаут репозитория
+
+    - uses: julia-actions/setup-julia@v1
+      with:
+        version: '1.9'  # Версия Julia
+
+    - name: Install dependencies
+      run: julia -e 'using Pkg; Pkg.activate("."); Pkg.instantiate()'
+
+    - name: Run tests 
+      run: julia src/jl/cov.jl
+
+
+
+
+
