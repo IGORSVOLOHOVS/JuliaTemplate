@@ -1,4 +1,6 @@
 using Pkg;
+Pkg.activate(".")
+Pkg.add("Test")
 Pkg.add("SQLite")
 Pkg.add("Profile")
 Pkg.add("Coverage")
@@ -7,3 +9,5 @@ Pkg.add("SyslogLogging")
 Pkg.add("PackageCompiler")
 Pkg.add("Documenter")
 Pkg.add("YAML")
+Pkg.instantiate()
+Pkg.precompile()
