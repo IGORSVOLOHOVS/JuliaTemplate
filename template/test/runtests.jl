@@ -1,11 +1,6 @@
-using Profile
-using PProf
+using Test
 
-function profile_main()
-    @profile Template.main()
+@testset "Template test" begin
+    Template.main()
+    @test true
 end
-
-Profile.clear()
-profile_main()
-pprof()
-
