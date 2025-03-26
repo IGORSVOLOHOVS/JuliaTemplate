@@ -11,7 +11,8 @@
 *.toml.bak
 *.toml.tmp
 Manifest.toml
-Project.toml
+coverage.info
+profile.pb.gz
 
 # Compiled shared libraries
 *.so
