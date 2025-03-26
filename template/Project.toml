@@ -1,0 +1,21 @@
+name = "Template"
+uuid = "96d0c99a-ced8-4d07-94cd-a88b95617718"
+authors = ["Igors Volohovs"]
+version = "0.1.0"
+
+[deps]
+ArgParse = "c7e460c6-2fb9-53a9-8c5b-16f535851c63"
+Coverage = "a2441757-f6aa-5fb2-8edb-039e3f45d037"
+Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
+Logging = "56ddb016-857b-54e1-b83d-db4d58db5568"
+PackageCompiler = "9b87118b-4619-50d2-8e1e-99f35a4d4d9d"
+Profile = "9abbd945-dff8-562f-b5e8-e1ebf5ef1b79"
+Revise = "295af30f-e4ad-537b-8983-00126c2a3abe"
+SQLite = "0aa819cd-b072-5ff4-a722-6bc24af294d9"
+SyslogLogging = "0c4b0c42-68ec-11ea-3bc9-e7fb6e00ea0f"
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+YAML = "ddb6d928-2868-570f-bddf-ab3f9cf99eb6"
+
+[compat]
+ArgParse = "1.2.0"
+Test = "1.11.0"
