@@ -1,14 +1,22 @@
 @echo off
 
-:: Get current date and time
-for /f "tokens=2-4 delims=/ " %%a in ('date /t') do (
-    set mydate=%%c%%a%%b
-)
-for /f "tokens=1-2 delims=/:" %%a in ('time /t') do (
-    set mytime=%%a%%b
-)
-set datestamp=%mydate%-%mytime%
-set datestamp=%datestamp: =%
+:: Get current date and time reliably using WMIC
+for /f "tokens=2 delims==" %%I in ('wmic path win32_localtime get year /format:list') do set year=%%I
+for /f "tokens=2 delims==" %%I in ('wmic path win32_localtime get month /format:list') do set month=%%I
+for /f "tokens=2 delims==" %%I in ('wmic path win32_localtime get day /format:list') do set day=%%I
+for /f "tokens=2 delims==" %%I in ('wmic path win32_localtime get hour /format:list') do set hour=%%I
+for /f "tokens=2 delims==" %%I in ('wmic path win32_localtime get minute /format:list') do set minute=%%I
+for /f "tokens=2 delims==" %%I in ('wmic path win32_localtime get second /format:list') do set second=%%I
+
+:: Pad single digits with leading zero for consistent format (YYYYMMDD-HHMMSS)
+if %month% lss 10 set month=0%month%
+if %day% lss 10 set day=0%day%
+if %hour% lss 10 set hour=0%hour%
+if %minute% lss 10 set minute=0%minute%
+if %second% lss 10 set second=0%second%
+
+:: Create the final timestamp string
+set datestamp=%year%%month%%day%-%hour%%minute%%second%
 
 :: Set paths
 set repoURL=https://github.com/IGORSVOLOHOVS/JuliaTemplate.git
@@ -69,17 +77,13 @@ git init || (
 popd
 
 :: Open the target directory in VS Code (if installed)
-where code > nul 2>&1
-if %errorlevel% equ 0 (
-    code "%targetDir%"
-) else (
-    echo VS Code (code) not found.  Skipping opening the directory.
-)
+code.cmd "%targetDir%"
 
 :: Remove the temporary clone directory
 rmdir /s /q "%cloneDir%" 2> nul
-if %errorlevel% neq 0 (
-  echo Warning: Failed to remove temporary directory: %cloneDir%
+:: --- MODIFIED LINE BELOW ---
+if errorlevel 1 (
+    echo Warning: Failed to remove temporary directory: %cloneDir%
 )
 
 echo Script completed successfully.  Project directory: %targetDir%
