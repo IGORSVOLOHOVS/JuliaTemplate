@@ -3,6 +3,26 @@
 Reverse-engineered from the code at commit `26fc43e` on 2026-11-18. Documentation hub:
 [docs/README.md](docs/README.md).
 
+<!-- jira-sync:start -->
+Jira: KAN-141
+
+## Tasks
+
+This list is one ticket in Jira project KAN, [KAN-141](https://igorsvolohovs.atlassian.net/browse/KAN-141). Each line is a checkbox there: tick it in Jira and the sync ticks it here; add a checkbox there and it is appended here. Done items are the features described in section 3; open items are what the project declares but the code does not do yet.
+
+- [x] Stamping a project (section 3.1) <!-- spec-stamping-a-project -->
+- [x] Template module (section 3.2) <!-- spec-template-module -->
+- [x] Developer support files (section 3.3) <!-- spec-developer-support-files -->
+- [ ] Passing test suite (declared, not implemented) <!-- spec-passing-test-suite -->
+- [ ] CI test run (declared, not implemented) <!-- spec-ci-test-run -->
+- [ ] Docker image that runs tests (declared, not implemented) <!-- spec-docker-image-that-runs-tests -->
+- [ ] Network services on ports 8000 and 514 (declared, not implemented) <!-- spec-network-services-on-ports-8000-and-514 -->
+- [ ] CLI argument parsing (declared, not implemented) <!-- spec-cli-argument-parsing -->
+- [ ] Syslog logging, Revise, PackageCompiler builds (declared, not implemented) <!-- spec-syslog-logging-revise-packagecompiler-builds -->
+- [ ] Report chapters: use case, component diagram, ERD, file structure (declared, not implemented) <!-- spec-report-chapters-use-case-component-diagram-erd-fil -->
+
+<!-- jira-sync:end -->
+
 ## 1. Purpose and scope
 
 **In scope:**
